@@ -34,8 +34,7 @@ TimeController.prototype = {
 
 	},
 	resetTheClock: function() {
-		this.model.clearTime
-
+		this.model.clearTime()
 	},
 	stopTheClock: function() {
 
