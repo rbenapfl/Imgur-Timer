@@ -14,16 +14,30 @@ function TimeController(timeModel) {
 TimeController.prototype = {
 	init: function() {
 		chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-			self.handleRequest(request.greeting)
+			self.handleRequest(request, sender, sendResponse)
 		})
 	},
-	handleRequest: function(requestMessage) {
-		console.log(requestMessage)
+	handleRequest: function(request, sender, sendResponse) {
+		var requestMessage = request.message
+		if (requestMessage === 'give me the time') {
+			sendResponse(self.returnTimeToClient())
+		}
+		else if (requestMessage === 'start the clock') {
+			self.startTheClock()
+		}
+		else if (requestMessage === 'reset the clock') {
+			self.resetTheClock()
+			self.stopTheClock()
+		}
 	},
 	startTheClock: function() {
 
 	},
 	resetTheClock: function() {
+		this.model.clearTime
+
+	},
+	stopTheClock: function() {
 
 	},
 	pollUrls: function() {
@@ -33,10 +47,10 @@ TimeController.prototype = {
 
 	},
 	addSecond: function() {
-
+		this.model.addSecond()
 	},
 	returnTimeToClient: function() {
-
+		return this.model.returnTimeObject()
 	}
 }
 
@@ -48,16 +62,33 @@ function TimeModel() {
 
 TimeModel.prototype = {
 	addSecond: function() {
-
+		if (this.seconds === 59) {
+			this.seconds = 0
+			this.addMinute()
+		}
+		else {
+			this.seconds += 1
+		}
 	},
 	addMinute:function() {
-
+		if (this.minutes === 59) {
+			this.minutes = 0
+			this.addHour()
+		}
+		else {
+			this.minutes += 1
+		}
 	},
 	addHour: function() {
-
+		this.hours += 1
+	},
+	clearTime: function() {
+		this.hours = 0
+		this.minutes = 0
+		this.seconds = 0
 	},
 	returnTimeObject: function() {
-
+		return {hours: this.hours, minutes: this.minutes, seconds: this.seconds}
 	}
 }
 
