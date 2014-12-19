@@ -8,7 +8,7 @@ window.onload = function(){
 function TimeController(timeModel) {
 	self = this
 	this.model = timeModel
-	this.interval = ''
+	this.interval = false
 }
 
 TimeController.prototype = {
@@ -31,19 +31,32 @@ TimeController.prototype = {
 		}
 	},
 	startTheClock: function() {
-
+		if (this.interval === false) {
+			self.pollUrls()
+		}
+	},
+	pollUrls: function() {
+		this.interval = setInterval(function() {
+			chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
+				if (tabs.length > 0) {
+					self.evaluateUrl(tabs[0].url)
+				}
+			}) 
+		}, 1000)
 	},
 	resetTheClock: function() {
 		this.model.clearTime()
 	},
 	stopTheClock: function() {
-
+		clearInterval(this.interval)
+		this.interval = false
 	},
-	pollUrls: function() {
-
-	},
-	evaluateUrl: function() {
-
+	evaluateUrl: function(url) {
+		//Reddit imgur thread counts too! Sorry guys, it's basically imgur :)
+		var regex = /.*imgur\.com.*/
+		if ((regex.test(url))) {
+			self.addSecond()
+		}
 	},
 	addSecond: function() {
 		this.model.addSecond()
@@ -61,6 +74,7 @@ function TimeModel() {
 
 TimeModel.prototype = {
 	addSecond: function() {
+		console.log(this.seconds)
 		if (this.seconds === 59) {
 			this.seconds = 0
 			this.addMinute()
@@ -91,13 +105,4 @@ TimeModel.prototype = {
 	}
 }
 
-// setInterval(function() {
-// 	chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-// 		if (tabs.length === 0) {
-// 			console.log("all tabs are closed")
-// 		}
-// 		else {
-// 			console.log(tabs[0].url)
-// 		}
-// 	}) 
-// }, 1000);
+
