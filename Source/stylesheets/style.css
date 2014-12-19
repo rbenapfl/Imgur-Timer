@@ -1,5 +1,27 @@
-#timeDisplay {
-	margin: 0;
-	padding: 0;
-	color: blue;
+* {
+	background-color: #2B2B2B;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+body {
+	width: 200px;
+}
+#imgurTimerCaption {
+	color: #DDDDD1;
+}
+#imgurTimerButtons {
+	margin-top: 7px;
+	color: #DDDDD1;
+}
+.imgurTimerUl {
+	text-align: center;
+}
+.imgurTimerUl li {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.imgurTimerUl p {
+	margin: 2px;
 }
