@@ -25,9 +25,12 @@ TimeController.prototype = {
 		else if (requestMessage === 'start the clock') {
 			self.startTheClock()
 		}
-		else if (requestMessage === 'reset the clock') {
-			self.resetTheClock()
-			self.stopTheClock()
+		else if (requestMessage === 'stop the clock') {
+			if (this.interval === false) {
+				self.resetTheClock()
+			} else {
+				self.stopTheClock()
+			}
 		}
 	},
 	startTheClock: function() {
@@ -42,7 +45,7 @@ TimeController.prototype = {
 					self.evaluateUrl(tabs[0].url)
 				}
 			}) 
-		}, 1000)
+		}, 994)
 	},
 	resetTheClock: function() {
 		this.model.clearTime()
@@ -52,11 +55,14 @@ TimeController.prototype = {
 		this.interval = false
 	},
 	evaluateUrl: function(url) {
+		console.log('evaulting')
+		console.log(url)
 		var sorryGoogle = /https:\/\/www\.google\.com.*/
 		var thanksAlexa = /www\.alexa\.com.*/
 		var thanksReddit = /https:\/\/www\.reddit\.com.*/
+		var nastySiteWowThisMakesMeSickHavingToAdd = /weheartit\.com.*/
 		var regex = /.*imgur\.com.*/
-		if ((regex.test(url)) &&  !(sorryGoogle.test(url)) && !(thanksReddit.test(url)) && !(thanksAlexa.test(url))) {
+		if ((regex.test(url)) && !(nastySiteWowThisMakesMeSickHavingToAdd.test(url)) &&  !(sorryGoogle.test(url)) && !(thanksReddit.test(url)) && !(thanksAlexa.test(url))) {
 			self.addSecond()
 		}
 	},
@@ -76,7 +82,6 @@ function TimeModel() {
 
 TimeModel.prototype = {
 	addSecond: function() {
-		console.log(this.seconds)
 		if (this.seconds === 59) {
 			this.seconds = 0
 			this.addMinute()

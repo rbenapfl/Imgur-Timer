@@ -5,11 +5,13 @@
 	text-align: center;
 }
 #imgurTimerBody {
-	width: 200px;
+	width: 230px;
 	color: #DDDDD1;
 }
 #imgurTimerCaption h1 {
 	margin: 0px;
+	font-size: 30px;
+	vertical-align: top;
 }
 #imgurTimerDisplay {
 	margin: 0px;
@@ -28,7 +30,7 @@
 }
 #imgurTimerNumbers {
 	margin: 0px;
-	font-size: 30px;
+	font-size: 43px;
 	font-style: bold;
 }
 #imgurTimerLogos {
@@ -53,6 +55,6 @@
 #startButton {
 	cursor: pointer;
 }
-#resetButton {
+#stopButton {
 	cursor: pointer;
 }
