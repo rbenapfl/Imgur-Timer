@@ -52,9 +52,11 @@ TimeController.prototype = {
 		this.interval = false
 	},
 	evaluateUrl: function(url) {
-		//Reddit imgur thread counts too! Sorry guys, it's basically imgur :)
+		var sorryGoogle = /https:\/\/www\.google\.com.*/
+		var thanksAlexa = /www\.alexa\.com.*/
+		var thanksReddit = /https:\/\/www\.reddit\.com.*/
 		var regex = /.*imgur\.com.*/
-		if ((regex.test(url))) {
+		if ((regex.test(url)) &&  !(sorryGoogle.test(url)) && !(thanksReddit.test(url)) && !(thanksAlexa.test(url))) {
 			self.addSecond()
 		}
 	},
