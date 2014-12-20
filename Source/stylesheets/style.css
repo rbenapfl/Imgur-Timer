@@ -1,27 +1,58 @@
-* {
+#imgurTimerHtml {
 	background-color: #2B2B2B;
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
 }
-body {
+#imgurTimerBody {
 	width: 200px;
-}
-#imgurTimerCaption {
 	color: #DDDDD1;
 }
-#imgurTimerButtons {
-	margin-top: 7px;
-	color: #DDDDD1;
+#imgurTimerCaption h1 {
+	margin: 0px;
 }
-.imgurTimerUl {
+#imgurTimerDisplay {
+	margin: 0px;
+	padding: 0px;
 	text-align: center;
 }
-.imgurTimerUl li {
+#imgurTimerDisplay ul {
+	margin: 0px;
+	padding: 0px;
+}
+#imgurTimerDisplay li {
+	display: inline-block;
+}
+#imgurTimerDisplay p {
+	margin: 2px;
+}
+#imgurTimerNumbers {
+	margin: 0px;
+	font-size: 30px;
+	font-style: bold;
+}
+#imgurTimerLogos {
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}	
+#imgurTimerLogos li {
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
 }
-.imgurTimerUl p {
-	margin: 2px;
+#imgurTimerLabels {
+	margin: 0px;
+	padding: 0px;
+}
+#imgurTimerLabels li {
+	display: inline-block;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+#startButton {
+	cursor: pointer;
+}
+#resetButton {
+	cursor: pointer;
 }

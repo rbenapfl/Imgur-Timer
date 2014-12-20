@@ -1,25 +1,32 @@
 <!doctype html>
-<html>
+<html id='imgurTimerHtml'>
   <head>
     <title>Imgur Timer!</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <script src='javascripts/imgurTimer.js'></script>
   </head>
-  <body>
+  <body id='imgurTimerBody'>
     <div id='imgurTimerContainer'>
       <div id='imgurTimerCaption'>
     	 <h1>Imgur Timer</h1>
    	  </div>
-   	  <div id='imgurTimeDisplay'>
+      <div id='imgurTimerDisplay'>
+        <ul id='imgurTimerNumbers'>
+          <li id='hours'>10</li>
+          <li class='colon'>:</li>
+          <li id='minutes'>43</li>
+          <li class='colon'>:</li>
+          <li id='seconds'>15</li>
+        </ul>
       </div>
-      <div id='imgurTimerButtons'>
-        <ul class='imgurTimerUl'>
+      <div id ='imgurTimerButtons'>
+        <ul id='imgurTimerLogos'>
           <li><img id='startButton' src='../images/up.png'></li>
           <li><img id='resetButton' src='../images/down.png'></li>
         </ul>
-        <ul class='imgurTimerUl'>
-          <li><p>Start</p></li>
-          <li><p>Reset</p></li>
+        <ul id='imgurTimerLabels'>
+          <li>Start</li>
+          <li>Reset</li>
         </ul>
    	  </div>
     </div>
