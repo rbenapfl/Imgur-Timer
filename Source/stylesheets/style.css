@@ -25,9 +25,6 @@
 #imgurTimerDisplay li {
 	display: inline-block;
 }
-#imgurTimerDisplay p {
-	margin: 2px;
-}
 #imgurTimerNumbers {
 	margin: 0px;
 	font-size: 43px;
@@ -35,8 +32,7 @@
 }
 #imgurTimerLogos {
 	padding: 0px;
-	margin-top: 10px;
-	margin-bottom: 0px;
+	margin: 0px;
 }	
 #imgurTimerLogos li {
 	display: inline-block;
@@ -49,12 +45,24 @@
 }
 #imgurTimerLabels li {
 	display: inline-block;
-	margin-left: 8px;
-	margin-right: 8px;
+	margin-left: 12px;
+	margin-right: 12px;
 }
-#startButton {
-	cursor: pointer;
+.imgurTimerButton {
+	border-width: 3px;
+	border-style: solid;
+	border-color: #2B2B2B;
+	border-radius: 3px;
 }
-#stopButton {
+#startButton:hover {
 	cursor: pointer;
+	border-color: green;
+}
+#stopButton:hover {
+	cursor: pointer;
+	border-color: DarkRed;
+}
+.imgurTimerButton:active {
+	border-width: 0px;
+	margin: 3px;
 }
