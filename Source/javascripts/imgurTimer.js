@@ -7,7 +7,7 @@ function TimerDisplayController() {
 	this.sendingMessages = {
 		start: 'start the clock',
 		time: 'give me the time',
-		reset: 'reset the clock'
+		stop: 'stop the clock'
 	}
 }
 
@@ -18,23 +18,28 @@ TimerDisplayController.prototype = {
 	},
 	requestTheTime: function() {
 		var sendingMessage = this.sendingMessages.time
+		chrome.runtime.sendMessage({message: sendingMessage}, function(response) {
+				TimerDisplayUpdater.updateValues(response)
+		})
 		setInterval(function() {
 			chrome.runtime.sendMessage({message: sendingMessage}, function(response) {
 				TimerDisplayUpdater.updateValues(response)
 			})
-		}, 1000)
+		}, 100)
 	},
 	addButtonListeners: function() {
-
+		document.getElementById('startButton').addEventListener('click', function() {
+			this.sendMessage(this.sendingMessages.start)
+		}.bind(this))
+		document.getElementById('stopButton').addEventListener('click', function() {
+			this.sendMessage(this.sendingMessages.stop)
+		}.bind(this))
 	},
 	sendMessage: function(messageType) {
-
+		console.log('sending message')
+		chrome.runtime.sendMessage({message: messageType}, function(){})
 	},
-	updateDisplay: function() {
-
-	}
 }
-
 TimerDisplayUpdater = {
 	updateValues: function(timeObject) {
 		var time = timeObject
@@ -43,13 +48,23 @@ TimerDisplayUpdater = {
 		TimerDisplayUpdater.updateSeconds(time.seconds)
 	},
 	updateHours: function(hours) {
-		console.log(hours)
+		document.getElementById('hours').innerText = hours.toString()
 	},
 	updateMinutes: function(minutes) {
-		console.log(minutes)
+		if (minutes < 10) {
+			var minuteDisplay = '0' + minutes.toString()
+		} else {
+			var minuteDisplay = mintues.toString()
+		}
+		document.getElementById('minutes').innerText = minuteDisplay
 	},
 	updateSeconds: function(seconds) {
-		console.log(seconds)
+		if (seconds < 10) {
+			var secondDisplay = '0' + seconds.toString()
+		} else {
+			var secondDisplay = seconds.toString()
+		}
+		document.getElementById('seconds').innerText = secondDisplay
 	}
 }
 
