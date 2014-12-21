@@ -10,7 +10,6 @@
     "https://*/*",
     "background"
   ],
-  // "background-page": "background.html",
   "browser_action": {
     "default_icon": "images/imgur.png",
     "default_popup": "timer.html"
