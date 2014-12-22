@@ -1,10 +1,10 @@
 Imgur-Timer
-https://chrome.google.com/webstore/detail/imgur-timer/pocknnioahmfjbngbjaipciepgcamnko
+#####https://chrome.google.com/webstore/detail/imgur-timer/pocknnioahmfjbngbjaipciepgcamnko
 ===========
 
 Chrome Extension that times hours wasted on imgur sessions!
 #####I built this extension as a novelty little gadget for imgur users to use.
-#####The main functionality of the extension is it is a timer that will only count up if the user is browsing on imgur.
+#####The main functionality of the extension is that it is a timer that will only count up if the user is browsing on imgur.
 #####It provided a few challenges such as having code loaded into an extension that won't be tied to having the popup window open.  I achieved this by using a background script and then sending chrome messages to it in order to let it know what functions I needed running.
 ###The coded ended up being really neat with my background scripts running based on what message they got!
 ![requesthandling](http://i.imgur.com/vNzenvz.jpg)
