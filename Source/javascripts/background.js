@@ -55,8 +55,6 @@ TimeController.prototype = {
 		this.interval = false
 	},
 	evaluateUrl: function(url) {
-		console.log('evaulting')
-		console.log(url)
 		var sorryGoogle = /https:\/\/www\.google\.com.*/
 		var thanksAlexa = /www\.alexa\.com.*/
 		var thanksReddit = /https:\/\/www\.reddit\.com.*/
