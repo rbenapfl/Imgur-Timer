@@ -36,7 +36,6 @@ TimerDisplayController.prototype = {
 		}.bind(this))
 	},
 	sendMessage: function(messageType) {
-		console.log('sending message')
 		chrome.runtime.sendMessage({message: messageType}, function(){})
 	},
 }
